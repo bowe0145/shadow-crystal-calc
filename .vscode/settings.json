@@ -1,0 +1,19 @@
+{
+    "standard.autoFixOnSave": true,
+    "standard.validate": [
+        "javascript",
+        "javascriptreact"
+    ],
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "tslint.autoFixOnSave": true,
+    "tslint.enable": true,
+    "tslint.trace.server": "verbose",
+    "tslint.configFile": "./tslint.json",
+    "files.autoSave": "off",
+    "typescriptHero.imports.organizeOnSave": true,
+    "typescriptHero.imports.insertSemicolons": false,
+    "typescriptHero.imports.insertSpaceBeforeAndAfterImportBraces": true,
+    "typescriptHero.codeOutline.enabled": true,
+    "typescriptHero.imports.removeTrailingIndex": true,
+}
