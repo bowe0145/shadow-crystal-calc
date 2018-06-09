@@ -1,0 +1,8 @@
+{
+  "extends": ["standard", "plugin:react/recommended"],
+  "rules": {
+    "react/prop-types": "warn",
+    "react/no-typos": "error"
+  },
+  "parser": "babel-eslint"
+}

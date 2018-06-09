@@ -1,0 +1,25 @@
+.shadow-crystal {
+  height: auto;
+  min-height: 150px;
+  min-width: 100px;
+  width: 150px;
+  border: 1px solid #000;
+  margin: 10px auto;
+}
+
+.shadow-crystal-image {
+  height: 45px;
+  width: 20px;
+  margin: 5px auto;
+  display: block;
+}
+
+.shadow-crystal-description {
+  background-color: #e6e6e6;
+  margin: 10px;
+  padding: 5px;
+}
+
+.shadow-crystal-title {
+  font-size: 24px;
+}
