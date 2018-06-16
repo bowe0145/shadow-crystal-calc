@@ -1,17 +1,17 @@
 import { SELECT_CRYSTAL } from './actions'
+import {getCrystal} from '../../constants/Crystals'
 
 const initialState = {
-  selectedCrystal: {}
+  selectedCrystal: getCrystal(0)
 }
-/* eslint-disable no-unused-vars */
-function crystalReducer (state = initialState, action) {
+
+export default function crystalReducer (state = initialState, action) {
   switch (action.type) {
     case SELECT_CRYSTAL:
       return Object.assign({}, state, {
-        selectedCrystal: action.payload
+        selectedCrystal: getCrystal(action.payload)
       })
     default:
       return state
   }
 }
-/* eslint-enable no-unused-vars */

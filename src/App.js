@@ -3,21 +3,25 @@ import './App.css'
 import React, { Component } from 'react'
 
 import { CrystalList } from './components/crystals'
-import logo from './logo.svg'
+import MissionList from './components/missions/MissionList'
+import { Provider } from 'react-redux'
+import { Results } from './components/containers'
+import { store } from './store'
 
 class App extends Component {
   render () {
     return (
       <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h1 className='App-title'>Welcome to React</h1>
-        </header>
-
-        <CrystalList />
+        <Provider store={store}>
+          <div>
+            <CrystalList />
+            <MissionList />
+            <MissionList type={1} />
+            <Results />
+          </div>
+        </Provider>
       </div>
     )
   }
 }
-
 export default App

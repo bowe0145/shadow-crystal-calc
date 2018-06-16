@@ -1,26 +1,30 @@
-import * as Style from './ShadowCrystal.css' // eslint-disable-line no-unused-vars
+import './ShadowCrystal.css' // eslint-disable-line no-unused-vars
 
 import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { getCrystal } from '../../constants'
+import { selectCrystal } from './actions'
 
-export default class ShadowCrystal extends Component {
+class ShadowCrystal extends Component {
   static defaultProps = {
-    type: PropTypes.symbol
+    type: 0
   }
 
-  constructor (props) {
-    super(props)
+  static propTypes = {
+    type: PropTypes.number
+  }
 
-    this.state = {
-      crystal: getCrystal(this.props.type)
-    }
+  state = {
+    crystal: getCrystal(this.props.type)
   }
 
   render () {
     return (
-      <div className='shadow-crystal'>
+      <div className='shadow-crystal' onClick={() => {
+        this.props.onClick()
+      }}>
         <Title {...this.state} />
         <Image {...this.state} />
         <Description {...this.state} />
@@ -40,8 +44,8 @@ const Image = ({crystal}) => {
     </React.Fragment>
   )
 }
-Image.defaultProps = {
-  crystal: PropTypes.symbol
+Image.propTypes = {
+  crystal: PropTypes.object
 }
 
 const Description = ({crystal}) => {
@@ -51,7 +55,7 @@ const Description = ({crystal}) => {
     </div>
   )
 }
-Description.defaultProps = {
+Description.propTypes = {
   crystal: PropTypes.object
 }
 
@@ -62,3 +66,21 @@ const Title = ({crystal}) => {
     </div>
   )
 }
+Title.propTypes = {
+  crystal: PropTypes.object
+}
+
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClick: () => {
+    dispatch(selectCrystal(ownProps.type))
+  }
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShadowCrystal)

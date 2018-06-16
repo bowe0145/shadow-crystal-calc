@@ -235,10 +235,40 @@ export const Missions = {
   ]
 }
 
-export const getMission = type => {
-  if (typeof type === 'number' && type < Missions.length && type > -1) {
-    return Missions[type]
+const getTaraMissions = id => {
+  if (typeof id === 'number' && id < Missions.tara.length && id > -1) {
+    return Missions.tara[id]
   } else {
-    return Missions[0]
+    return Missions.tara[0]
+  }
+}
+
+const getTaillteannMissions = id => {
+  if (typeof id === 'number' && id < Missions.taillteann.length && id > -1) {
+    return Missions.taillteann[id]
+  } else {
+    return Missions.taillteann[0]
+  }
+}
+
+export const getMission = ({type, id}) => {
+  if (typeof type === 'string') {
+    if (type === 'taillteann') {
+      return getTaillteannMissions(id)
+    } else if (type === 'tara') {
+      return getTaraMissions(id)
+    } else {
+      throw new Error(`Missions/getMission: Error finding the mission with {type: ${type}, id: ${id}}`)
+    }
+  } else if (typeof type === 'number') {
+    if (type === 0) {
+      return getTaillteannMissions(id)
+    } else if (type === 1) {
+      return getTaraMissions(id)
+    } else {
+      throw new Error(`Missions/getMission: Error finding the mission with {type: ${type}, id: ${id}}`)
+    }
+  } else {
+    throw new Error(`Missions/getMission: Error finding the mission with {type: ${type}, id: ${id}}`)
   }
 }
