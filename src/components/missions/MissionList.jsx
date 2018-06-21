@@ -13,17 +13,29 @@ class MissionList extends Component {
     type: 0
   }
 
+  state = {
+    active: true
+  }
+
+  toggleState = () => {
+    this.setState((prev) => ({ active: !prev.active }))
+  }
+
   renderList () {
     if (this.props.type === 0) {
       return Missions.taillteann.map((mission, id) => {
         return (<Mission
           key={'id-' + id}
+          location={0}
+          missionID={id}
           mission={mission} />)
       })
     } else {
       return Missions.tara.map((mission, id) => {
         return (<Mission
           key={'id-' + id}
+          location={1}
+          missionID={id}
           mission={mission} />)
       })
     }
@@ -31,8 +43,45 @@ class MissionList extends Component {
 
   render () {
     return (
-      <div className='shadow-crystal-list'>
-        {this.renderList()}
+      <div className='shadow-mission-list'>
+        <ToggleHeader onClick={this.toggleState} />
+        {this.state.active && this.renderList()}
+      </div>
+    )
+  }
+}
+
+class ToggleHeader extends Component {
+  static propTypes = {
+    active: PropTypes.bool,
+    onClick: PropTypes.func
+
+  }
+  static defaultProps = {
+    active: true
+  }
+  state = {
+    active: this.props.active
+  }
+
+  toggleState = () => {
+    this.setState((prev) => ({ active: !prev.active }), () => {
+      this.props.onClick()
+    })
+  }
+
+  classesName = () => {
+    if (this.state.active) {
+      return 'toggle-header opened'
+    } else {
+      return 'toggle-header closed'
+    }
+  }
+
+  render () {
+    return (
+      <div className={this.classesName()} onClick={this.toggleState}>
+        {this.state.active ? 'opened' : 'closed'}
       </div>
     )
   }

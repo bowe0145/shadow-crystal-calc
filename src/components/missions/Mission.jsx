@@ -3,15 +3,18 @@ import './Mission.css'
 import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { selectMission } from './actions'
 
-export default class Mission extends Component {
+export class Mission extends Component {
   static propTypes = {
-    mission: PropTypes.object
+    mission: PropTypes.object,
+    onClick: PropTypes.func
   }
 
   render () {
     return (
-      <div className='shadow-mission'>
+      <div className='shadow-mission' onClick={this.props.onClick}>
         <Title {...this.props} />
       </div>
     )
@@ -19,7 +22,6 @@ export default class Mission extends Component {
 }
 
 const Title = ({mission}) => {
-  console.log(mission)
   return (
     <div className='shadow-mission-title'>
       {mission.name}
@@ -40,3 +42,19 @@ const Description = ({mission}) => {
 Description.propTypes = {
   mission: PropTypes.object
 }
+
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClick: () => {
+    console.log(`selecting mission at: ${ownProps.location}, ID: ${ownProps.missionID}`)
+    dispatch(selectMission(ownProps.location, ownProps.missionID))
+  }
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Mission)

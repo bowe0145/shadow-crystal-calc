@@ -13,7 +13,8 @@ class ShadowCrystal extends Component {
   }
 
   static propTypes = {
-    type: PropTypes.number
+    type: PropTypes.number,
+    onClick: PropTypes.func
   }
 
   state = {

@@ -1,3 +1,14 @@
 .shadow-mission {
   background-color: blanchedalmond;
 }
+
+.opened {
+  background-color: green;
+  height: auto;
+}
+
+.closed {
+  background-color: red;
+  height: 18px;
+  overflow: hidden;
+}

@@ -252,6 +252,7 @@ const getTaillteannMissions = id => {
 }
 
 export const getMission = ({type, id}) => {
+  console.log(`received: {type: ${type}, id: ${id}}`)
   if (typeof type === 'string') {
     if (type === 'taillteann') {
       return getTaillteannMissions(id)
