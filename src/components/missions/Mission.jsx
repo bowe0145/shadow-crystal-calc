@@ -49,7 +49,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onClick: () => {
-    console.log(`selecting mission at: ${ownProps.location}, ID: ${ownProps.missionID}`)
     dispatch(selectMission(ownProps.location, ownProps.missionID))
   }
 })

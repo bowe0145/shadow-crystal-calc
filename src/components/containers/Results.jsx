@@ -19,7 +19,13 @@ class Results extends Component {
     return (
       <div>
         <div>{this.props.selectedCrystal.description || 'No crystal'}</div>
-        <div>{this.props.selectedMission.name}</div>
+        <div>
+          <p>{this.props.selectedMission.name}</p>
+          <p>{this.props.selectedMission.gold[4]}</p>
+        </div>
+        <div>
+          Total Gold from Elite: {this.props.selectedCrystal.multiplier * this.props.selectedMission.gold[4]}
+        </div>
       </div>
     )
   }
@@ -27,8 +33,8 @@ class Results extends Component {
 
 function mapStateToProps (state) {
   return {
-    selectedCrystal: state.crystalReducer.selectedCrystal,
-    selectedMission: state.missionReducer.selectedMission
+    selectedCrystal: state.crystals.selectedCrystal,
+    selectedMission: state.missions.selectedMission
   }
 }
 

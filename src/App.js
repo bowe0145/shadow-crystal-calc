@@ -6,6 +6,10 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { store } from './store'
 
+// TODO: Add selectors for calculating the gain
+// TODO: Add option for inputting price of crystals
+// TODO: Add Styling
+
 class App extends Component {
   render () {
     return (
